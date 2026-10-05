@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quà 20/10 💗</title>
+<style>
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Arial", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:
+        radial-gradient(circle at 20% 20%, #fff8fa 0%, transparent 30%),
+        radial-gradient(circle at 80% 80%, #ffdce7 0%, transparent 35%),
+        linear-gradient(135deg, #ffeef4, #fff7f9);
+    overflow: hidden;
+}
+/* Trái tim trang trí */
+.floating-heart {
+    position: fixed;
+    color: #ef9caf;
+    font-size: 25px;
+    opacity: 0.55;
+    animation: floating 4s ease-in-out infinite;
+}
+.h1 { left: 10%; top: 15%; }
+.h2 { right: 12%; top: 20%; animation-delay: 1s; }
+.h3 { left: 18%; bottom: 15%; animation-delay: 2s; }
+.h4 { right: 17%; bottom: 12%; animation-delay: 3s; }
+@keyframes floating {
+    0%,100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-18px);
+    }
+}
+/* Khung chính */
+.container {
+    width: 90%;
+    max-width: 500px;
+    padding: 35px 25px;
+    text-align: center;
+    background: rgba(255,255,255,0.72);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.8);
+    border-radius: 30px;
+    box-shadow:
+        0 15px 45px rgba(200,100,130,0.18);
+}
+/* Trái tim */
+.big-heart {
+    font-size: 90px;
+    color: #e9879f;
+    animation: heartbeat 1.5s infinite;
+}
+@keyframes heartbeat {
+    0%,100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.15);
+    }
+}
+h1 {
+    margin: 10px 0 8px;
+    color: #b84f6a;
+    font-size: 22px;
+    line-height: 1.5;
+}
+.description {
+    color: #c47c8f;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+/* Ô nhập */
+textarea {
+    width: 100%;
+    height: 120px;
+    padding: 15px;
+    border-radius: 18px;
+    border: 2px solid #f1b5c3;
+    outline: none;
+    resize: none;
+    font-size: 16px;
+    font-family: Arial;
+    background: rgba(255,255,255,0.9);
+    transition: 0.3s;
+}
+textarea:focus {
+    border-color: #df8199;
+    box-shadow:
+        0 0 15px rgba(223,129,153,0.2);
+}
+.hint {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #c48796;
+}
+/* Nút nhạc */
+.music-button {
+    margin-top: 20px;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 30px;
+    background: #e991a7;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(220,120,145,0.25);
+    transition: 0.25s;
+}
+.music-button:hover {
+    transform: scale(1.05);
+    background: #d97891;
+}
+/* Thông báo */
+.success {
+    display: none;
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 15px;
+    background: #ffe0e8;
+    color: #b64d68;
+    font-size: 14px;
+}
+/* Dòng bí mật */
+.secret {
+    margin-top: 18px;
+    font-size: 11px;
+    color: #d19aa8;
+}
+</style>
+</head>
+<body>
+<!-- Trái tim trang trí -->
+<div class="floating-heart h1">♡</div>
+<div class="floating-heart h2">♥</div>
+<div class="floating-heart h3">♡</div>
+<div class="floating-heart h4">♥</div>
+<div class="container">
+    <div class="big-heart">♥</div>
+    <h1>
+        Món quà mà "em bé" muốn được
+        tặng vào 20/10 này là gì? 💗
+    </h1>
+    <div class="description">
+        Hãy viết điều em mong muốn vào đây nhé...
+    </div>
+    <textarea
+        id="message"
+        placeholder="Em bé muốn được tặng...">
+    </textarea>
+    <div class="hint">
+        Nhấn Enter để gửi lời nhắn 💌
+    </div>
+    <button class="music-button" onclick="toggleMusic()">
+        🎵 Bật nhạc
+    </button>
+    <div id="success" class="success">
+        💗 Đã gửi lời nhắn thành công!
+    </div>
+    <div class="secret">
+        Một lời nhắn nhỏ dành riêng cho ngày 20/10 🌷
+    </div>
+</div>
+<!--
+====================================================
+PHẦN NHẠC
+====================================================
+Bạn không nên tải/nhúng trái phép bài hát có bản quyền.
+Nếu bạn có file nhạc được phép sử dụng,
+đặt file tên "music.mp3" cùng thư mục với index.html.
+Ví dụ:
+📁 website
+ ├── index.html
+ └── music.mp3
+Sau đó code bên dưới sẽ phát file đó.
+-->
+<audio id="music" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+<script>
+/* ============================
+   GỬI LỜI NHẮN
+============================ */
+const messageBox = document.getElementById("message");
+const success = document.getElementById("success");
+messageBox.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        const message = messageBox.value.trim();
+        if (message === "") {
+            return;
+        }
+        /*
+        Bản demo:
+        Nội dung được lưu vào trình duyệt
+        bằng localStorage.
+        Khi làm bản chính thức có database,
+        phần này sẽ được thay bằng API/database.
+        */
+        let messages =
+            JSON.parse(
+                localStorage.getItem("messages20_10")
+            ) || [];
+        messages.push({
+            message: message,
+            time: new Date().toLocaleString("vi-VN")
+        });
+        localStorage.setItem(
+            "messages20_10",
+            JSON.stringify(messages)
+        );
+        /* Xóa nội dung */
+        messageBox.value = "";
+        /* Hiện thông báo */
+        success.style.display = "block";
+        setTimeout(function() {
+            success.style.display = "none";
+        }, 2500);
+    }
+});
+/* ============================
+   NHẠC
+============================ */
+const music = document.getElementById("music");
+let playing = false;
+function toggleMusic() {
+    const button = document.querySelector(".music-button");
+    if (!playing) {
+        music.play();
+        button.innerHTML = "⏸ Tắt nhạc";
+        playing = true;
+    } else {
+        music.pause();
+        button.innerHTML = "🎵 Bật nhạc";
+        playing = false;
+    }
+}
+</script>
+</body>
+</html>
