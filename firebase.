@@ -1,0 +1,18 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyBmT3PYMhekqeS-i-XfqfpMnQoLyVhe_u4",
+    authDomain: "monquanho-e1404.firebaseapp.com",
+    projectId: "monquanho-e1404",
+    storageBucket: "monquanho-e1404.firebasestorage.app",
+    messagingSenderId: "126769771494",
+    appId: "1:126769771494:web:cfbddc425c070fa6f6dc27",
+    measurementId: "G-Z6Y75GZD00"
+};
+
+const app = initializeApp(firebaseConfig);
+
+export const auth = getAuth(app);
+export const db = getFirestore(app);
